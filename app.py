@@ -36,11 +36,9 @@ engine = create_engine(
     connect_args={"ssl": {"ssl_ca": "DigiCertGlobalRootCA.crt.pem"}},
 )
 
-query = '''SELECT *
-    FROM cities
-    '''
-
-df = pd.read_csv(r"static\city.csv")
+path = "static"
+download_file_path = os.path.join(path, "city.csv")
+df = pd.read_csv(download_file_path)
 
 @app.route('/')
 def index():
