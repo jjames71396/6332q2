@@ -37,9 +37,6 @@ engine = create_engine(
     connect_args={"ssl": {"ssl_ca": "DigiCertGlobalRootCA.crt.pem"}},
 )
 
-path = "static"
-download_file_path = os.path.join(path, "city.csv")
-df = pd.read_csv(download_file_path)
 
 @app.route('/')
 def index():
@@ -97,7 +94,6 @@ def range():
     args[2] = int(args[2])
     args[3] = float(args[3])
     args[4] = float(args[4])
-    df.loc[len(df.index)] = args
 
     # Define the data for the new record as a dictionary
     new_record = {
